@@ -98,4 +98,33 @@ footer.socials {
 .social-icons a:nth-child(1) { color: #333; } /* GitHub (black/gray) */
 .social-icons a:nth-child(2) { color: #0077B5; } /* LinkedIn blue */
 .social-icons a:nth-child(3) { color: #EA4335; } /* Gmail red */
-  
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .projects {
+    margin: 1rem;
+  }
+
+  .project-card {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .social-icons {
+    gap: 1.5rem;
+  }
+
+  .social-icons a {
+    font-size: 2.5rem;
+  }
+}
