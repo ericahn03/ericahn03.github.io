@@ -46,4 +46,11 @@ anime({
       });
     });
   });
-  
+// Animate socials fade + pop in
+anime({
+  targets: '.socials a',
+  opacity: [0, 1],
+  scale: [0.5, 1],
+  delay: anime.stagger(200, {start: 2000}), // each icon comes one after another
+  easing: 'easeOutElastic(1, .8)'
+});
