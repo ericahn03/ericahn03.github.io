@@ -1,4 +1,4 @@
-// Title fade-in
+// Initial entrance animations
 anime({
     targets: '#title',
     opacity: [0, 1],
@@ -16,12 +16,34 @@ anime({
     duration: 1200
   });
   
-  // Projects animate in staggered
   anime({
     targets: '.project-card',
     opacity: [0, 1],
     translateY: [30, 0],
     delay: anime.stagger(300, {start: 1000}),
     easing: 'easeOutCubic'
+  });
+  
+  // Dark/Light theme toggle
+  const toggleButton = document.getElementById('theme-toggle');
+  toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    document.body.classList.toggle('light');
+  });
+  
+  // Hover/click animations for project cards
+  const projectCards = document.querySelectorAll('.project-card');
+  
+  // Click pop animation
+  projectCards.forEach(card => {
+    card.addEventListener('click', () => {
+      anime({
+        targets: card,
+        scale: [
+          { value: 0.95, duration: 100, easing: 'easeOutQuad' },
+          { value: 1, duration: 300, easing: 'easeOutElastic(1, .8)' }
+        ]
+      });
+    });
   });
   
