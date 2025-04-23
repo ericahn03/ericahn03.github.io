@@ -8,40 +8,66 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <!-- Add FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <!-- tsParticles core library -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+  <!-- Parallax mover plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/move-parallax@3/tsparticles.move.parallax.min.js"></script>
+  <script src="script.js" defer></script>
 </head>
-<body>
-  <div class="container">
-
-    <header>
-      <h1 id="title">Eric Ahn</h1>
-      <p id="subtitle">CS Projects & Experiments</p>
-      <button id="theme-toggle">Toggle Theme</button>
-    </header>
-
-    <section class="projects">
-      <div class="project-card" data-id="1">
-        <h2>CareerAi</h2>
-        <p>AI-powered resume enhancer and job matcher.</p>
-      </div>
-      <div class="project-card" data-id="2">
-        <h2>Mortality Prediction Pipeline</h2>
-        <p>ML model using Weka and Python to predict patient outcomes.</p>
-      </div>
-      <div class="project-card" data-id="3">
-        <h2>Jarvis</h2>
-        <p>Privacy-focused AI assistant for Mac and Windows.</p>
-      </div>
-    </section>
-
-    <footer class="socials">
-      <div class="social-icons">
-        <a href="https://github.com/ericahn03" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/eric-ahn-1b07592b8/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:ericahn03@gmail.com"><i class="fas fa-envelope"></i></a>
-      </div>
-    </footer>
-
-  </div> <!-- end of container -->
+<body class="light">
+  <header>
+    <div id="tsparticles"></div> 
   
+    <div class="hero-bg-deep"></div>
+    <div class="hero-bg"></div>
+  
+    <div class="hero-content">
+      <div class="glass-box">
+        <h1 id="title">Eric Ahn</h1>
+        <p id="subtitle">CS Projects & Experiments</p>
+        <a href="#projects" class="cta-button">View My Work ↓</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="projects" id="projects">
+    <div class="project-card" data-id="1">
+      <h2>CareerAi</h2>
+      <p>AI-powered resume enhancer and job matcher.</p>
+    </div>
+    <div class="project-card" data-id="2">
+      <h2>Mortality Prediction Pipeline</h2>
+      <p>ML model using Weka and Python to predict patient outcomes.</p>
+    </div>
+    <div class="project-card" data-id="3">
+      <h2>Jarvis</h2>
+      <p>Privacy-focused AI assistant for Mac and Windows.</p>
+    </div>
+  </section>
   <script src="script.js"></script>
+
+  <!-- Social Sidebar -->
+  <div class="social-sidebar">
+    <a href="https://github.com/ericahn03" target="_blank" class="social-link">
+      <i class="fab fa-github"></i><span>GitHub</span>
+    </a>
+    <a href="https://www.linkedin.com/in/eric-ahn-1b07592b8/" target="_blank" class="social-link">
+      <i class="fab fa-linkedin"></i><span>LinkedIn</span>
+    </a>
+    <a href="mailto:ericahn03@gmail.com" class="social-link">
+      <i class="fas fa-envelope"></i><span>Email</span>
+    </a>
+  </div>
+  
+  <!-- Theme toggle in top-right corner -->
+  <div class="theme-switch-topright">
+    <div class="theme-switch" id="theme-switch">
+      <div class="switch-track">
+        <div class="switch-thumb" id="switch-thumb"></div>
+      </div>
+      <div class="theme-icon" id="theme-icon"></div>
+    </div>
+  </div>
 </body>
