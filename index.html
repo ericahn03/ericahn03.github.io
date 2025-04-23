@@ -4,25 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eric Ahn | Project Showcase</title>
+  
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Animation & Fonts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  <!-- Add FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
-  <!-- tsParticles core library -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
-  <!-- Parallax mover plugin -->
-  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/move-parallax@3/tsparticles.move.parallax.min.js"></script>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <!-- Custom JS -->
   <script src="script.js" defer></script>
 </head>
 <body class="light">
   <header>
-    <div id="tsparticles"></div> 
-  
+    <!-- ✅ Replaced #tsparticles with #particles-js for particles.js -->
+    <div id="particles-js"></div>
+
     <div class="hero-bg-deep"></div>
     <div class="hero-bg"></div>
-  
+
     <div class="hero-content">
       <div class="glass-box">
         <h1 id="title">Eric Ahn</h1>
@@ -46,7 +51,6 @@
       <p>Privacy-focused AI assistant for Mac and Windows.</p>
     </div>
   </section>
-  <script src="script.js"></script>
 
   <!-- Social Sidebar -->
   <div class="social-sidebar">
@@ -71,3 +75,4 @@
     </div>
   </div>
 </body>
+</html>

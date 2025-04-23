@@ -1,63 +1,58 @@
-
-document.addEventListener("DOMContentLoaded", async () => {
-  const currentTheme = document.body.classList.contains("dark") ? "dark" : "light";
-  const particleColor = currentTheme === "dark" ? "#ff69b4" : "#ff69b4";
-
-  await tsParticles.load("tsparticles", {
-    fullScreen: { 
-      enable: false, 
-      zIndex: 1
-    },
-    background: { color: "ff00ff" },
+document.addEventListener("DOMContentLoaded", () => {
+  // ✅ Initialize Particles.js
+  particlesJS("particles-js", {
     particles: {
       number: {
-        value: 80,
-        density: {
-          enable: true,
-          area: 800
-        }
+        value: 120,
+        density: { enable: true, value_area: 800 }
       },
-      color: {
-        value: "#ff00ff"
-      },
-      shape: { type: "circle" },
-      opacity: { value: 0.5, random: true },
-      size: { value: 3, random: true },
+      color: { value: "#ffffff" },
+      shape: { type: "edge" },
+      opacity: { value: 0.8 },
+      size: { value: 4, random: true },
       move: {
         enable: true,
-        speed: 1,
-        parallax: {
-          enable: true,
-          force: 60,
-          smooth: 10
-        }
+        speed: 1.8,
+        direction: "none",
+        out_mode: "bounce"
       },
-      links: {
+      line_linked: {
         enable: true,
-        distance: 150,
-        color: particleColor,
-        opacity: 0.4,
+        distance: 120,
+        color: "#ffffff",
+        opacity: 0.3,
         width: 1
       }
     },
     interactivity: {
       events: {
-        onHover: {
-          enable: true,
-          mode: "repulse"
-        },
+        onhover: { enable: true, mode: "grab" },
         resize: true
       },
       modes: {
-        repulse: {
-          distance: 100,
-          duration: 0.4
+        grab: {
+          distance: 140,
+          line_linked: {
+            opacity: 0.6
+          }
         }
       }
     },
-    detectRetina: true
+    retina_detect: true
   });
 
+  console.log("✅ Particles.js initialized");
+
+  document.addEventListener("mousemove", (e) => {
+    const root = document.documentElement;
+    const offsetX = (e.clientX / window.innerWidth - 0.5) * 20;
+    const offsetY = (e.clientY / window.innerHeight - 0.5) * 20;
+  
+    root.style.setProperty("--parallax-x", `${offsetX}px`);
+    root.style.setProperty("--parallax-y", `${offsetY}px`);
+  });
+
+  // Title animations
   anime({
     targets: '#title',
     opacity: [0, 1],
@@ -83,10 +78,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     easing: 'easeOutCubic'
   });
 
+  // Theme toggle
   const body = document.body;
   const switchThumb = document.getElementById("switch-thumb");
   const themeIcon = document.getElementById("theme-icon");
-
   let isDark = body.classList.contains("dark");
 
   document.getElementById("theme-switch").addEventListener("click", () => {
@@ -113,6 +108,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
+  // Project card click bounce
   const projectCards = document.querySelectorAll('.project-card');
   projectCards.forEach(card => {
     card.addEventListener('click', () => {
@@ -126,6 +122,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
+  // Parallax scroll animations
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     const maxScroll = 200;
@@ -155,6 +152,4 @@ document.addEventListener("DOMContentLoaded", async () => {
       translateY: -scrollY * 0.1
     });
   });
-
-  console.log("✅ tsParticles loaded and animated");
 });
