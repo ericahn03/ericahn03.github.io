@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       size: { value: 4, random: true },
       move: {
         enable: true,
-        speed: 1.8,
+        speed: 0.35,
         direction: "none",
         out_mode: "bounce"
       },
