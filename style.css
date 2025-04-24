@@ -456,24 +456,10 @@ body.light .social-sidebar a:nth-child(1) i {
   margin-top: 2rem;       /* optional: ensure top spacing is consistent too */
 }
 
-.pdf-section-full {
-  width: 100%;
-  padding: 4rem 2rem;
-  margin-top: 3rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  box-shadow: inset 0 0 0 100vmax rgba(0, 0, 0, 0.05);
-}
-
 .pdf-section-full h2 {
   text-align: center;
   color: #93c5fd;
   margin-bottom: 2rem;
-}
-
-.pdf-item {
-  max-width: 1000px;
-  margin: 2rem auto;
 }
 
 .pdf-item h4 {
@@ -491,9 +477,4 @@ body.light .social-sidebar a:nth-child(1) i {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
-.pdf-container {
-  position: relative;
-  width: 100%;
-  height: 700px;
-  margin-bottom: 2rem;
-}
+

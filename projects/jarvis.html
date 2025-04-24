@@ -8,10 +8,13 @@
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
+  <!-- Styling -->
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(to bottom right, #0f172a, #1e293b);
@@ -32,6 +35,11 @@
       width: 100%;
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
       animation: fadeIn 0.8s ease forwards;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 40px 80px rgba(59, 130, 246, 0.35);
     }
 
     @keyframes fadeIn {
@@ -40,14 +48,21 @@
     }
 
     h1 {
-      font-size: 2.75rem;
+      font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
       text-align: center;
+    }
+
+    #typed-title {
       background: linear-gradient(to right, #3b82f6, #60a5fa);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .content {
+      text-align: left;
     }
 
     .video-wrapper {
@@ -61,7 +76,8 @@
 
     .video-wrapper iframe {
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       border: none;
@@ -73,11 +89,14 @@
       margin-top: 2rem;
       margin-bottom: 0.75rem;
       color: #93c5fd;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 0.3rem;
     }
 
     ul {
       padding-left: 1.5rem;
       line-height: 1.75;
+      margin-top: 0.5rem;
     }
 
     a.cta-button {
@@ -102,7 +121,6 @@
       font-size: 0.9rem;
       color: #94a3b8;
       margin-top: 0.5rem;
-      text-align: left;
     }
 
     .tag-group {
@@ -119,69 +137,23 @@
       font-size: 0.8rem;
       color: #e0f2fe;
       font-weight: 500;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.75);
+      transition: transform 0.3s ease;
     }
 
-    .modal-content {
-      position: relative;
-      margin: 5% auto;
-      width: 90%;
-      max-width: 1000px;
-      background: #1e293b;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    .tag:hover {
+      transform: scale(1.1);
     }
-
-    .modal-content iframe {
-      width: 100%;
-      height: 80vh;
-      border: none;
-      border-radius: 8px;
-    }
-
-    .close-btn {
-      color: #f1f5f9;
-      float: right;
-      font-size: 1.8rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
   </style>
-  <script>
-    function openModal(pdfUrl) {
-      document.getElementById("modalPdfViewer").src = pdfUrl;
-      document.getElementById("pdfModal").style.display = "block";
-    }
-  
-    function closeModal() {
-      document.getElementById("pdfModal").style.display = "none";
-      document.getElementById("modalPdfViewer").src = "";
-    }
-  
-    window.onclick = function(event) {
-      const modal = document.getElementById("pdfModal");
-      if (event.target === modal) closeModal();
-    }
-  </script>  
 </head>
 <body>
   <div class="card">
-    <h1>JARVIS Project Demo</h1>
+    <h1><span id="typed-title"></span></h1>
 
     <div class="video-wrapper">
       <iframe src="https://www.youtube.com/embed/5ATZ_7YWslM" allowfullscreen></iframe>
     </div>
 
-    <div>
+    <div class="content">
       <h2 class="section-title">Overview</h2>
       <p>
         JARVIS is a privacy-focused AI assistant for macOS and Windows. It integrates smart device control, LLM-powered responses, and file management while prioritizing user data privacy.
@@ -204,29 +176,22 @@
       <h2 class="section-title">Source Code</h2>
       <a href="https://github.com/willkohn/jarvis" target="_blank" class="cta-button">View Code on GitHub</a>
       <p class="note">Note: This is a private repository. Please contact the owner for access.</p>
-      </div> <!-- closing .card -->
 
-      <div class="pdf-section-full">
-        <h2 class="section-title">Documentation</h2>
-        <div class="pdf-item">
-          <h4>User Guide</h4>
-          <div class="pdf-container">
-            <iframe src="../pdfs/jarvis_userdoc.pdf" title="User Guide PDF"></iframe>
-            <button class="cta-button" onclick="openModal('../pdfs/jarvis_userdoc.pdf')">View Larger</button>
-          </div>
-        </div>
-        
-        <div class="pdf-item">
-          <h4>Developer Guide</h4>
-          <div class="pdf-container">
-            <iframe src="../pdfs/jarvis_devdoc.pdf" title="Developer Guide PDF"></iframe>
-            <button class="cta-button" onclick="openModal('../pdfs/jarvis_devdoc.pdf')">View Larger</button>
-          </div>
-        </div>
+      <h2 class="section-title">Documentation</h2>
 
+      <h4>User Guide</h4>
+      <div class="video-wrapper">
+        <iframe src="../pdfs/jarvis_userdoc.pdf" title="User Guide PDF"></iframe>
+      </div>
+
+      <h4>Developer Guide</h4>
+      <div class="video-wrapper">
+        <iframe src="../pdfs/jarvis_devdoc.pdf" title="Developer Guide PDF"></iframe>
+      </div>
     </div>
   </div>
 
+  <!-- Scripts -->
   <script>
     anime({
       targets: '.tag',
@@ -235,14 +200,14 @@
       delay: anime.stagger(100, { start: 1000 }),
       easing: 'easeOutCubic'
     });
-  </script>
-  <!-- PDF Modal -->
-  <div id="pdfModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <iframe id="modalPdfViewer" src="" frameborder="0"></iframe>
-    </div>
-  </div>
 
+    new Typed('#typed-title', {
+      strings: ["JARVIS Project Demo"],
+      typeSpeed: 60,
+      backSpeed: 0,
+      loop: false,
+      showCursor: false
+    });
+  </script>
 </body>
 </html>

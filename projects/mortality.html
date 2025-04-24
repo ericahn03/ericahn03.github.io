@@ -8,11 +8,13 @@
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
   <!-- Styling -->
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(to bottom right, #0f172a, #1e293b);
@@ -33,6 +35,11 @@
       width: 100%;
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
       animation: fadeIn 0.8s ease forwards;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 40px 80px rgba(59, 130, 246, 0.35);
     }
 
     @keyframes fadeIn {
@@ -41,14 +48,21 @@
     }
 
     h1 {
-      font-size: 2.75rem;
+      font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
       text-align: center;
+    }
+
+    #typed-title {
       background: linear-gradient(to right, #3b82f6, #60a5fa);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .content {
+      text-align: left;
     }
 
     .video-wrapper {
@@ -62,7 +76,8 @@
 
     .video-wrapper iframe {
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       border: none;
@@ -74,11 +89,14 @@
       margin-top: 2rem;
       margin-bottom: 0.75rem;
       color: #93c5fd;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 0.3rem;
     }
 
     ul {
       padding-left: 1.5rem;
       line-height: 1.75;
+      margin-top: 0.5rem;
     }
 
     a.cta-button {
@@ -113,18 +131,23 @@
       font-size: 0.8rem;
       color: #e0f2fe;
       font-weight: 500;
+      transition: transform 0.3s ease;
+    }
+
+    .tag:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>Mortality Prediction Pipeline</h1>
+    <h1><span id="typed-title"></span></h1>
 
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+      <iframe src="../pdfs/CS323_Research_Project (final).pdf" title="Final Report PDF"></iframe>
     </div>
 
-    <div>
+    <div class="content">
       <h2 class="section-title">Overview</h2>
       <p>
         A machine learning pipeline designed to predict mortality rates using Weka and Python. This project applies ensemble models on global health data for high-accuracy forecasts.
@@ -156,6 +179,14 @@
       opacity: [0, 1],
       delay: anime.stagger(100, { start: 1000 }),
       easing: 'easeOutCubic'
+    });
+
+    new Typed('#typed-title', {
+      strings: ["Mortality Prediction Pipeline"],
+      typeSpeed: 60,
+      backSpeed: 0,
+      loop: false,
+      showCursor: false
     });
   </script>
 </body>
