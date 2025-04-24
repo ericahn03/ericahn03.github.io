@@ -122,6 +122,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const magneticItems = document.querySelectorAll('.magnetic');
+
+  magneticItems.forEach(item => {
+    item.addEventListener('mousemove', e => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+  
+      anime({
+        targets: item,
+        translateX: x * 0.1,
+        translateY: y * 0.1,
+        duration: 200,
+        easing: 'easeOutQuad'
+      });
+    });
+  
+    item.addEventListener('mouseleave', () => {
+      anime({
+        targets: item,
+        translateX: 0,
+        translateY: 0,
+        duration: 300,
+        easing: 'easeOutQuad'
+      });
+    });
+  });
+
   // Parallax scroll animations
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
@@ -152,4 +180,25 @@ document.addEventListener("DOMContentLoaded", () => {
       translateY: -scrollY * 0.1
     });
   });
+  const animatedSections = document.querySelectorAll('.project-card');
+
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+  
+    animatedSections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if (sectionTop < triggerBottom) {
+        anime({
+          targets: section,
+          opacity: [0, 1],
+          translateY: [30, 0],
+          duration: 1000,
+          easing: 'easeOutCubic'
+        });
+      }
+    });
+  };
+  
+  window.addEventListener('scroll', revealOnScroll);
+  
 });

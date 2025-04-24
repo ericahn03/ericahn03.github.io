@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eric Ahn | Project Showcase</title>
-  
+
   <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
-  
+  <link rel="stylesheet" href="style.css" />
+
   <!-- Animation & Fonts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
 
   <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -22,49 +22,47 @@
 </head>
 <body class="light">
   <header>
-    <!-- ✅ Replaced #tsparticles with #particles-js for particles.js -->
     <div id="particles-js"></div>
-
     <div class="hero-bg-deep"></div>
     <div class="hero-bg"></div>
 
     <div class="hero-content">
       <div class="glass-box">
         <h1 id="title">Eric Ahn</h1>
-        <p id="subtitle">CS Projects & Experiments</p>
+        <p id="subtitle"><span id="typewriter"></span></p>
         <a href="#projects" class="cta-button">View My Work ↓</a>
       </div>
     </div>
   </header>
 
   <section class="projects" id="projects">
-    <div class="project-card" data-id="1">
-      <h2>CareerAi</h2>
+    <a href="projects/careerai.html" class="project-card magnetic" data-id="1">
+      <h2>CareerAI</h2>
       <p>AI-powered resume enhancer and job matcher.</p>
-    </div>
-    <div class="project-card" data-id="2">
+    </a>
+    <a href="projects/mortality.html" class="project-card magnetic" data-id="2">
       <h2>Mortality Prediction Pipeline</h2>
       <p>ML model using Weka and Python to predict patient outcomes.</p>
-    </div>
-    <div class="project-card" data-id="3">
+    </a>
+    <a href="projects/jarvis.html" class="project-card magnetic" data-id="3">
       <h2>Jarvis</h2>
       <p>Privacy-focused AI assistant for Mac and Windows.</p>
-    </div>
+    </a>
   </section>
 
   <!-- Social Sidebar -->
   <div class="social-sidebar">
-    <a href="https://github.com/ericahn03" target="_blank" class="social-link">
+    <a href="https://github.com/ericahn03" target="_blank" class="social-link magnetic">
       <i class="fab fa-github"></i><span>GitHub</span>
     </a>
-    <a href="https://www.linkedin.com/in/eric-ahn-1b07592b8/" target="_blank" class="social-link">
+    <a href="https://www.linkedin.com/in/eric-ahn-1b07592b8/" target="_blank" class="social-link magnetic">
       <i class="fab fa-linkedin"></i><span>LinkedIn</span>
     </a>
-    <a href="mailto:ericahn03@gmail.com" class="social-link">
+    <a href="mailto:ericahn03@gmail.com" class="social-link magnetic">
       <i class="fas fa-envelope"></i><span>Email</span>
     </a>
   </div>
-  
+
   <!-- Theme toggle in top-right corner -->
   <div class="theme-switch-topright">
     <div class="theme-switch" id="theme-switch">
@@ -74,5 +72,22 @@
       <div class="theme-icon" id="theme-icon"></div>
     </div>
   </div>
+
+  <!-- 🔡 Typewriter Script -->
+  <script>
+    const text = "CS Projects & Experiments";
+    const typeTarget = document.getElementById("typewriter");
+    let index = 0;
+
+    function typeWriter() {
+      if (index < text.length) {
+        typeTarget.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 75);
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", typeWriter);
+  </script>
 </body>
 </html>
