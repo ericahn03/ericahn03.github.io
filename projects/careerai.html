@@ -129,6 +129,26 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
+    .home-btn {
+      display: block;
+      width: fit-content;
+      margin: 2.5rem auto 0 auto;
+      padding: 0.85rem 1.6rem;
+      background: linear-gradient(135deg, #63f178, #f081f8); /* Indigo shades */
+      color: white;
+      font-weight: 600;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .home-btn:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, #818cf8, #93c5fd); /* Slightly lighter hover */
+      box-shadow: 0 6px 18px rgba(99, 102, 241, 0.35);
+    }
+
     a.cta-button:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 18px rgba(59, 130, 246, 0.35);
@@ -200,6 +220,7 @@
       <div class="video-wrapper">
         <iframe src="../pdfs/careerai_report.pdf" title="CareerAI Report PDF"></iframe>
       </div>
+      <a href="../index.html" class="cta-button home-btn">← Back to Home</a>
     </div>
   </div>
 

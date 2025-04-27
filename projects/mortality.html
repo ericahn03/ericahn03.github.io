@@ -17,7 +17,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #1e293b);
+      background: linear-gradient(-45deg, #0f172a, #064e3b, #0f172a, #064e3b);
       background-size: 400% 400%;
       animation: gradientShift 40s ease infinite;
       color: #f8fafc;
@@ -35,13 +35,13 @@
       padding: 3rem;
       max-width: 840px;
       width: 100%;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
       animation: fadeIn 0.8s ease forwards;
       transition: box-shadow 0.3s ease;
     }
 
     .card:hover {
-      box-shadow: 0 40px 80px rgba(59, 130, 246, 0.35);
+      box-shadow: 0 40px 80px rgba(13, 148, 136, 0.35);
     }
 
     @keyframes fadeIn {
@@ -69,7 +69,7 @@
     }
 
     #typed-title {
-      background: linear-gradient(to right, #3b82f6, #60a5fa);
+      background: linear-gradient(to right, #fef9c3, #fef08a);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -102,8 +102,8 @@
       font-size: 1.4rem;
       margin-top: 2rem;
       margin-bottom: 0.75rem;
-      color: #93c5fd;
-      border-bottom: 1px solid #334155;
+      color: #fef9c3; /* Lighter orange */
+      border-bottom: 1px solid #d9f99d; /* Soft orange underline */
       padding-bottom: 0.3rem;
     }
 
@@ -117,8 +117,8 @@
       display: inline-block;
       margin-top: 1.0rem;
       padding: 0.85rem 1.6rem;
-      background: linear-gradient(135deg, #3b82f6, #60a5fa);
-      color: white;
+      background: linear-gradient(135deg, #d1fae5, #fef9c3);
+      color: black;
       font-weight: 600;
       border-radius: 12px;
       text-decoration: none;
@@ -128,7 +128,8 @@
 
     a.cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(59, 130, 246, 0.35);
+      background: linear-gradient(135deg, #fef9c3, #fef08a);
+      box-shadow: 0 6px 18px rgba(224, 242, 254, 0.25);
     }
 
     .tag-group {
@@ -139,11 +140,11 @@
     }
 
     .tag {
-      background: #1e3a8a;
+      background: #065f46;
       padding: 0.4rem 0.8rem;
       border-radius: 999px;
       font-size: 0.8rem;
-      color: #e0f2fe;
+      color: #d1fae5;
       font-weight: 500;
       transition: transform 0.3s ease;
     }
