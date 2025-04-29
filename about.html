@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me | Eric Ahn</title>
+
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="../style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <style>
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-photo {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .about-text {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-color);
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+
+<body class="dark">
+  <div id="particles-js"></div>
+
+  <section class="about-container">
+    <img src="../assets/profile.jpg" alt="Profile Picture" class="about-photo" />
+    <h1 style="font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem;">About Me</h1>
+    <p class="about-text">
+      Hi, I'm Eric Ahn — a Computer Science student with a deep interest in AI, machine learning, and building creative tools that make life simpler and smarter. I love working on meaningful projects that combine technology, design, and impact. Whether it’s crafting smart assistants, exploring NLP models, or creating clean and responsive UIs, I thrive on turning ideas into real, functioning products.
+      <br /><br />
+      Outside of coding, I’m involved in missions, music, and always looking for new challenges to grow and collaborate. This portfolio is a collection of the work I’m most proud of, and I’m excited to keep expanding it.
+    </p>
+    <a href="../index.html" class="cta-button">← Back to Home</a>
+  </section>
+
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "star" }, // change shape here
+        opacity: { value: 0.4, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: false }, // no connecting lines
+        move: {
+          enable: true,
+          speed: 1.2,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: false },
+          resize: true
+        },
+        modes: {
+          repulse: { distance: 80, duration: 0.4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+</html>
