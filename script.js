@@ -202,3 +202,15 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('scroll', revealOnScroll);
   
 });
+
+// Theme toggle checkbox logic
+const toggleCheckbox = document.getElementById("theme-toggle");
+const body = document.body;
+
+toggleCheckbox.checked = body.classList.contains("dark");
+
+toggleCheckbox.addEventListener("change", () => {
+  const isDark = toggleCheckbox.checked;
+  body.classList.toggle("dark", isDark);
+  body.classList.toggle("light", !isDark);
+});

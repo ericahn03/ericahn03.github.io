@@ -19,8 +19,49 @@
 
   <!-- Custom JS -->
   <script src="script.js" defer></script>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+  
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+  
 </head>
 <body class="light">
+  <!-- NAVBAR -->
+  <nav class="top-navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="#home">Portfolio</a>
+      </div>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="pdfs/cv_ea.pdf" target="_blank">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Theme Toggle -->
+      <div class="theme-toggle-wrapper">
+        <label class="toggle-label" for="theme-toggle">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+
   <header>
     <div id="particles-js"></div>
     <div class="hero-bg-deep"></div>
@@ -63,16 +104,6 @@
     </a>
   </div>
 
-  <!-- Theme toggle in top-right corner -->
-  <div class="theme-switch-topright">
-    <div class="theme-switch" id="theme-switch">
-      <div class="switch-track">
-        <div class="switch-thumb" id="switch-thumb"></div>
-      </div>
-      <div class="theme-icon" id="theme-icon"></div>
-    </div>
-  </div>
-
   <!-- 🔡 Typewriter Script -->
   <script>
     const text = "CS Projects & Experiments";
@@ -91,3 +122,19 @@
   </script>
 </body>
 </html>
+
+<section id="contact" class="contact-section">
+  <h2 class="contact-heading">Let’s Connect</h2>
+  <p class="contact-text">
+    Always happy to chat about code, collaboration, or coffee.<br><br>
+    Find me on
+    <a href="https://github.com/ericahn03" target="_blank" class="contact-link">GitHub</a>,
+    <a href="https://www.linkedin.com/in/eric-ahn-1b07592b8/" target="_blank" class="contact-link">LinkedIn</a>,
+    or just drop me an
+    <a href="mailto:ericahn03@gmail.com" class="contact-link">email</a>.
+  </p>
+</section>
+
+
+
+
