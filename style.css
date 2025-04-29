@@ -644,19 +644,18 @@ body.light .social-sidebar a:nth-child(1) i {
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
-    top: 70px;
+    top: 60px;
     left: 0;
-    background: var(--header-bg);
     width: 100%;
     flex-direction: column;
-    align-items: center;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+    background: var(--header-bg);
+    display: none;
+    text-align: center;
+    padding: 1rem 0;
   }
 
   .nav-links.show {
-    max-height: 300px;
+    display: flex;
   }
 
   .hamburger {
@@ -777,5 +776,51 @@ body.light .social-sidebar a:nth-child(1) i {
 
 .toggle-label input:checked + .toggle-slider::before {
   transform: translateX(22px);
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: var(--header-bg);
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 0;
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--header-text-color);
+    border-radius: 2px;
+  }
+
+  .theme-toggle-wrapper {
+    margin-left: 1rem;
+  }
+}
+
+body.light .nav-links a,
+body.dark .nav-links a {
+  color: var(--header-text-color);
+  font-size: 1rem;
+  padding: 0.5rem 0;
 }
 

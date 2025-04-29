@@ -19,15 +19,29 @@
 
   <!-- Custom JS -->
   <script src="script.js" defer></script>
-
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
   
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+  
+      // Theme toggle logic
+      const themeToggle = document.getElementById("theme-toggle");
+      const body = document.body;
+  
+      themeToggle.checked = body.classList.contains("dark");
+  
+      themeToggle.addEventListener("change", () => {
+        const isDark = themeToggle.checked;
+        body.classList.toggle("dark", isDark);
+        body.classList.toggle("light", !isDark);
+      });
     });
   </script>
+  
   
 </head>
 <body class="light">
