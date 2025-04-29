@@ -482,4 +482,63 @@ body.light .social-sidebar a:nth-child(1) i {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
+@media (max-width: 768px) {
+  header {
+    height: auto;
+    padding: 3rem 1rem;
+    flex-direction: column;
+  }
+
+  #title {
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-content {
+    padding: 1.5rem;
+  }
+
+  .projects {
+    margin: 1.5rem;
+  }
+
+  .project-card {
+    width: 90%;
+    max-width: 400px;
+    margin: 1rem auto;
+  }
+
+  .social-sidebar {
+    display: none; /* Hide sidebar on mobile for cleaner experience */
+  }
+
+  .glass-box {
+    padding: 2rem;
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 1rem;
+  }
+
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  #title {
+    font-size: 2rem;
+  }
+
+  .pdf-item iframe {
+    height: 300px;
+  }
+
+  .project-card-front, .project-card-back {
+    padding: 1rem;
+  }
+}
+
 
