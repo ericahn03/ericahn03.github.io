@@ -67,8 +67,8 @@
     }
 
     .main-section {
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: auto 1fr;
       align-items: center;
       justify-content: center;
       gap: 3rem;
@@ -84,13 +84,54 @@
       height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.08);
-      transition: transform 0.3s ease;
-    }
+      object-position: center top;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
     .about-photo:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     }
+
+    .frosted-ring {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      padding: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+      transition: box-shadow 0.3s ease;
+      margin-bottom: 2rem;
+    }
+
+    .frosted-ring:hover {
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.4);
+    }
+
+    .frosted-ring:hover .about-photo {
+      transform: scale(1.05);
+    }   
+
+
+    .about-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .tech-icons a {
+      color: inherit;
+      text-decoration: none;
+    }
+
 
     .intro-text {
       flex: 1;
@@ -161,6 +202,14 @@
       color: #38bdf8; /* your accent blue */
       text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
     }
+
+    @media (max-width: 768px) {
+      .main-section {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      }
+    }
   </style>
 </head>
 
@@ -169,7 +218,9 @@
   <div id="particles-js"></div>
 
   <section class="main-section">
-    <img src="../assets/profile.jpg" alt="Profile Picture" class="about-photo" />
+    <div class="frosted-ring">
+        <img src="../assets/profile.jpg" alt="Profile Picture" class="about-photo" />
+      </div>
     <div class="intro-text">
       <h1>About Me</h1>
       <p>
@@ -190,23 +241,25 @@
     <div class="tech-category">
       <h3>Languages</h3>
       <div class="tech-icons">
-        <i class="fab fa-python" title="Python"></i>
-        <i class="fab fa-java" title="Java"></i>
-        <i class="fab fa-swift" title="Swift"></i>
-        <i class="fab fa-js-square" title="JavaScript"></i>
+        <a href="https://www.python.org/" target="_blank"><i class="fab fa-python" title="Python"></i></a>
+        <a href="https://www.java.com/" target="_blank"><i class="fab fa-java" title="Java"></i></a>
+        <a href="https://developer.apple.com/swift/" target="_blank"><i class="fab fa-swift" title="Swift"></i></a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><i class="fab fa-js-square" title="JavaScript"></i></a>
       </div>
     </div>
   
     <div class="tech-category">
       <h3>Frameworks & Tools</h3>
       <div class="tech-icons">
-        <i class="fab fa-react" title="React"></i>
-        <i class="fab fa-git-alt" title="Git"></i>
-        <i class="fab fa-github" title="GitHub"></i>
-        <i class="fas fa-database" title="MongoDB"></i>
-        <i class="fas fa-terminal" title="Unix/CLI"></i>
+        <a href="https://reactjs.org/" target="_blank"><i class="fab fa-react" title="React"></i></a>
+        <a href="https://git-scm.com/" target="_blank"><i class="fab fa-git-alt" title="Git"></i></a>
+        <a href="https://github.com/" target="_blank"><i class="fab fa-github" title="GitHub"></i></a>
+        <a href="https://www.mongodb.com/" target="_blank"><i class="fas fa-database" title="MongoDB"></i></a>
+        <a href="https://developer.apple.com/xcode/" target="_blank"><i class="fas fa-code" title="Xcode"></i></a>
       </div>
-    </div>  
+    </div>
+  </section>
+  
 
   <section class="section">
     <a href="../index.html" class="cta-button">← Back to Home</a>
