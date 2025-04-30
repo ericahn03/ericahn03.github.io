@@ -15,70 +15,200 @@
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
   <style>
+    :root {
+      --primary-bg: #0f0f0f;
+      --surface-bg: #1a1a1a;
+      --text-primary: #f4f4f5;
+      --text-secondary: #c7c7c7;
+      --accent: #38bdf8;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+    }
+
+    body.dark {
+      background: none !important;
+    }
+
+    .background-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary-bg);
+      z-index: -3;
+    }
+
+    .background-layer::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 25%, rgba(56, 189, 248, 0.06), transparent);
+      pointer-events: none;
+      z-index: -1;
+    }
+
     #particles-js {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      z-index: -2;
+      background: transparent;
     }
 
-    .about-container {
+    .main-section {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      padding: 8rem 2rem;
-      max-width: 800px;
+      justify-content: center;
+      gap: 3rem;
+      padding: 8rem 2rem 4rem;
+      max-width: 1000px;
       margin: 0 auto;
-      text-align: center;
+      flex-wrap: wrap;
+      animation: fadeIn 1s ease-out;
     }
 
     .about-photo {
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        object-fit: cover;
-        object-position: center top;
-        margin-bottom: 2rem;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.08);
+      transition: transform 0.3s ease;
     }
 
-    .about-text {
+    .about-photo:hover {
+      transform: scale(1.05);
+    }
+
+    .intro-text {
+      flex: 1;
       font-size: 1.125rem;
       line-height: 1.8;
-      color: var(--text-color);
-      margin-bottom: 2rem;
+      color: var(--text-secondary);
+      max-width: 500px;
+    }
+
+    .intro-text h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      text-align: center;
+      animation: fadeIn 1.5s ease-out;
     }
 
     .cta-button {
       display: inline-block;
-      background-color: var(--accent-color);
-      color: white;
+      background-color: var(--accent);
+      color: black;
       padding: 0.75rem 1.5rem;
       font-weight: 600;
       border-radius: 12px;
       text-decoration: none;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, box-shadow 0.3s;
     }
 
     .cta-button:hover {
-      background-color: #2563eb;
+      background-color: #0ea5e9;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+
+    .tech-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      font-size: 2rem;
+      color: var(--accent);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .tech-icons i {
+      transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.3s ease;
+    }
+
+    .tech-icons i:hover {
+      transform: scale(1.2);
+      color: #38bdf8; /* your accent blue */
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
     }
   </style>
 </head>
 
 <body class="dark">
+  <div class="background-layer"></div>
   <div id="particles-js"></div>
 
-  <section class="about-container">
+  <section class="main-section">
     <img src="../assets/profile.jpg" alt="Profile Picture" class="about-photo" />
-    <h1 style="font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem;">About Me</h1>
-    <p class="about-text">
-      Hi, I'm Eric Ahn — a Computer Science student with a deep interest in AI, machine learning, and building creative tools that make life simpler and smarter. I love working on meaningful projects that combine technology, design, and impact. Whether it’s crafting smart assistants, exploring NLP models, or creating clean and responsive UIs, I thrive on turning ideas into real, functioning products.
-      <br /><br />
-      Outside of coding, I’m involved in missions, music, and always looking for new challenges to grow and collaborate. This portfolio is a collection of the work I’m most proud of, and I’m excited to keep expanding it.
+    <div class="intro-text">
+      <h1>About Me</h1>
+      <p>
+        I'm Eric Ahn — a Computer Science graduate from Emory University, Class of 2025, with a passion for AI, machine learning, and building tools that simplify life. Whether I'm developing smart assistants or crafting responsive UIs, I love blending design with function to create meaningful experiences.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <p>
+      Outside of code, you'll find me immersed in missions, music, and exploring new challenges that grow both skill and soul. I’m always seeking creative collaborations and meaningful impact.
     </p>
+  </section>
+
+  <section class="section">
+    <h2>Tools & Tech I Use</h2>
+  
+    <div class="tech-category">
+      <h3>Languages</h3>
+      <div class="tech-icons">
+        <i class="fab fa-python" title="Python"></i>
+        <i class="fab fa-java" title="Java"></i>
+        <i class="fab fa-swift" title="Swift"></i>
+        <i class="fab fa-js-square" title="JavaScript"></i>
+      </div>
+    </div>
+  
+    <div class="tech-category">
+      <h3>Frameworks & Tools</h3>
+      <div class="tech-icons">
+        <i class="fab fa-react" title="React"></i>
+        <i class="fab fa-git-alt" title="Git"></i>
+        <i class="fab fa-github" title="GitHub"></i>
+        <i class="fas fa-database" title="MongoDB"></i>
+        <i class="fas fa-terminal" title="Unix/CLI"></i>
+      </div>
+    </div>  
+
+  <section class="section">
     <a href="../index.html" class="cta-button">← Back to Home</a>
   </section>
 
@@ -87,10 +217,10 @@
       particles: {
         number: { value: 60, density: { enable: true, value_area: 800 } },
         color: { value: "#ffffff" },
-        shape: { type: "star" }, // change shape here
+        shape: { type: "star" },
         opacity: { value: 0.4, random: true },
         size: { value: 3, random: true },
-        line_linked: { enable: false }, // no connecting lines
+        line_linked: { enable: false },
         move: {
           enable: true,
           speed: 1.2,
