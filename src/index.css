@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tokens */
+:root { --accent: #6aa5ff; } /* calm blue */
+.section { @apply py-10; }
+.container { @apply mx-auto max-w-5xl px-4 sm:px-6; }
+.btn { @apply inline-flex items-center justify-center rounded-lg border px-3 py-1.5 text-sm; }
+.btn-solid { @apply border-[#6aa5ff]/30 bg-[#6aa5ff]/15 hover:bg-[#6aa5ff]/25; }
+.btn-ghost { @apply border-white/15 hover:border-[#6aa5ff]/60; }
+.card { @apply rounded-xl border border-white/15 bg-white/10; }
+.h1 { @apply text-3xl md:text-4xl font-bold text-white; }
+.h2 { @apply text-xl font-semibold text-white; }
+.h3 { @apply text-lg font-semibold text-white; }
+.small { @apply text-xs text-zinc-400; }
+.link { @apply text-zinc-300 hover:text-white; }
+.timeline-line { @apply absolute left-5 top-0 bottom-0 border-l border-white/20 hidden sm:block; }
+.timeline-dot { @apply absolute left-5 translate-x-[-7px] h-3.5 w-3.5 rounded-full bg-[var(--accent)] ring-4 ring-[#15181b] hidden sm:block; }
