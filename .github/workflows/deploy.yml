@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,8 +11,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -22,18 +22,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-      # If you have package-lock.json use npm ci; otherwise use 'npm i'
+          cache: npm
       - run: npm ci
       - run: npm run build
-
-      # SPA fallback so refreshes on deep routes work on GitHub Pages
-      - name: Add SPA fallback (404.html)
-        run: cp -f dist/index.html dist/404.html
-
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist  # change if your build folder is NOT 'dist'
+          path: dist
   deploy:
     needs: build
     runs-on: ubuntu-latest
