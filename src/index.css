@@ -2,18 +2,210 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Tokens */
-:root { --accent: #6aa5ff; } /* calm blue */
-.section { @apply py-10; }
+/* =========================
+   Tokens & shared utilities
+   ========================= */
+:root {
+  --accent: #6aa5ff;
+
+  /* Long-form reading tokens (bigger & wider) */
+  --blog-font: 18.5px;
+  --blog-leading: 1.9;
+  --blog-gap: 1.2rem;
+  --blog-gap-lg: 1.35rem;
+  --blog-max: 120ch;
+
+  /* Global fonts */
+  --font-body: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --title-font: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+}
+
+html, body { font-family: var(--font-body); }
+
+/* Containers & sections */
+.section   { @apply py-10; }
 .container { @apply mx-auto max-w-5xl px-4 sm:px-6; }
-.btn { @apply inline-flex items-center justify-center rounded-lg border px-3 py-1.5 text-sm; }
-.btn-solid { @apply border-[#6aa5ff]/30 bg-[#6aa5ff]/15 hover:bg-[#6aa5ff]/25; }
-.btn-ghost { @apply border-white/15 hover:border-[#6aa5ff]/60; }
-.card { @apply rounded-xl border border-white/15 bg-white/10; }
-.h1 { @apply text-3xl md:text-4xl font-bold text-white; }
-.h2 { @apply text-xl font-semibold text-white; }
-.h3 { @apply text-lg font-semibold text-white; }
+/* Wider shell (use alongside .container when you want wider pages) */
+.container-wide { max-width: 90rem; } /* ~1440px cap */
+
+/* Buttons / cards / type scales */
+.btn        { @apply inline-flex items-center justify-center rounded-lg border px-3 py-1.5 text-sm; }
+.btn-solid  { @apply border-[#6aa5ff]/30 bg-[#6aa5ff]/15 hover:bg-[#6aa5ff]/25; }
+.btn-ghost  { @apply border-white/15 hover:border-[#6aa5ff]/60; }
+.card       { @apply rounded-xl border border-white/15 bg-white/10; }
+
+.h1    { @apply text-3xl md:text-4xl font-bold text-white; }
+.h2    { @apply text-xl font-semibold text-white; }
+.h3    { @apply text-lg font-semibold text-white; }
 .small { @apply text-xs text-zinc-400; }
-.link { @apply text-zinc-300 hover:text-white; }
+.link  { @apply text-zinc-300 hover:text-white; }
+
+/* Timeline bits */
 .timeline-line { @apply absolute left-5 top-0 bottom-0 border-l border-white/20 hidden sm:block; }
-.timeline-dot { @apply absolute left-5 translate-x-[-7px] h-3.5 w-3.5 rounded-full bg-[var(--accent)] ring-4 ring-[#15181b] hidden sm:block; }
+.timeline-dot  { @apply absolute left-5 translate-x-[-7px] h-3.5 w-3.5 rounded-full bg-[var(--accent)] ring-4 ring-[#15181b] hidden sm:block; }
+
+/* ======================
+   Blog: index / listing
+   ====================== */
+.blog-band { @apply bg-[#101214]; }
+.blog-wrap { @apply max-w-4xl mx-auto px-4; }
+
+.blog-list    { @apply divide-y divide-white/10; }
+.blog-item    { @apply py-6; }
+.blog-title   { @apply text-2xl md:text-3xl font-semibold text-white; }
+.blog-excerpt { @apply text-[15px] leading-7 text-zinc-400; }
+
+.blog-row  { @apply grid grid-cols-[8ch,1fr] gap-6; }
+.blog-date { @apply text-right text-zinc-500; }
+.blog-date::after { content: ""; @apply block w-px h-full bg-white/10 ml-auto mt-2; }
+.blog-link { @apply block hover:opacity-90; }
+
+/* =====================
+   Blog: article (post)
+   ===================== */
+
+/* Frame: allow very wide measure; center it */
+.blog-article {
+  max-width: min(var(--blog-max), 100%);
+  margin-inline: auto;
+  scroll-margin-top: 84px; /* ~ header height */
+}
+
+/* Base article title (used for individual post titles) */
+.article-title {
+  max-width: var(--blog-max);
+  margin-inline: auto;
+  font-size: clamp(28px, 2.1vw + 18px, 40px);
+  line-height: 1.25;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+/* Base meta row */
+.article-meta-row {
+  @apply text-xs text-zinc-400;
+  display: flex; align-items: center; gap: .5rem;
+  max-width: var(--blog-max);
+  margin-inline: auto;
+  margin-top: .35rem;
+  font-size: 12px;
+}
+
+/* Separator (subtle, aligned to measure) */
+.blog-separator {
+  border: 0;
+  border-top: 1px solid rgb(255 255 255 / 0.10);
+  width: min(var(--blog-max), 100%);
+  margin: 1.25rem auto 1.5rem;
+}
+
+/* Paragraphs */
+.blog-body p {
+  font-size: var(--blog-font);
+  line-height: var(--blog-leading);
+  color: rgb(212 212 216); /* zinc-300 */
+  letter-spacing: 0.01em;
+}
+
+/* Vertical rhythm */
+.blog-body > * + * { margin-top: var(--blog-gap); }
+@media (min-width: 768px) {
+  .blog-body > * + * { margin-top: var(--blog-gap-lg); }
+}
+
+/* Headings inside the article body */
+.blog-body h2 {
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 2.25rem;
+  margin-bottom: .5rem;
+  font-size: clamp(22px, 1.1vw + 18px, 28px);
+}
+
+/* Optional small “kicker” inside h2 */
+.blog-body h2 .kicker {
+  font-style: italic;
+  font-weight: 400;
+  color: rgb(161 161 170);   /* zinc-400 */
+  font-size: 0.85em;
+}
+
+/* Lists */
+.blog-body ul { list-style: disc; padding-left: 1.25rem; }
+.blog-body li {
+  margin: .35rem 0;
+  color: rgb(212 212 216);
+  font-size: var(--blog-font);
+  line-height: var(--blog-leading);
+}
+
+/* Blockquotes & links */
+.blog-body blockquote {
+  border-left: 2px solid rgb(255 255 255 / 0.10);
+  padding-left: 1rem;
+  color: rgb(161 161 170); /* zinc-400 */
+  font-style: italic;
+}
+.blog-body a {
+  text-decoration: underline;
+  text-decoration-color: rgb(82 82 91); /* zinc-600 */
+  text-underline-offset: 4px;
+}
+.blog-body a:hover { opacity: .9; }
+
+/* Images dropped into post body */
+.blog-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: .5rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+}
+
+/* === Blog page hero (centered + distinct) === */
+.article-hero{
+  text-align: center;
+  max-width: var(--blog-max);
+  margin: 0 auto;
+  margin-bottom: clamp(3rem, 7vw, 3rem); /* breathing room under hero */
+}
+
+.article-hero .article-title{
+  font-family: var(--title-font);
+  font-weight: 700;
+  font-optical-sizing: auto;
+  letter-spacing: -0.012em;
+  line-height: 1.1;
+  color: #fff;
+  max-width: none; /* let hero title breathe */
+  font-size: clamp(34px, 3vw + 16px, 56px);
+}
+
+/* Accent underline under hero title (96px) */
+.article-hero .article-title::after{
+  content: "";
+  display: block;
+  width: 96px;
+  height: 3px;
+  margin: 1rem auto 0;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+/* Kicker (“New posts appear at the top”) */
+.article-hero .article-meta-row{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  max-width: none;
+  margin-inline: auto;
+  margin-top: .6rem;      /* nudge lower under title */
+  margin-bottom: 1.5rem;  /* space before content/line */
+  font-family: var(--title-font);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: rgb(161 161 170); /* zinc-400 */
+}

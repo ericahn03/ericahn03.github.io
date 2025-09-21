@@ -1,4 +1,5 @@
-import { HashRouter } from 'react-router-dom'
+import { HashRouter, Routes, Route, useParams, useLocation } from 'react-router-dom'
+import { useEffect, useMemo } from 'react'
 
 export default function App(){
   const data = {
@@ -116,18 +117,222 @@ export default function App(){
     ],
   }
 
+
+const BLOG_POSTS = [
+  {
+    slug: "about-me",
+    title: "A quick overview about me, my personal values, and a rant on why routines matter more than motivation",
+    date: "2025-09-20",
+    excerpt: "Since this is my first blog post, I guess it feels obligatory to introduce who I am and what I stand for. Think of this as a...",
+    body: `
+      <p>Since this is my first blog post, I guess it feels obligatory to introduce who I am and what I stand for. 
+      Think of this as a baseline: where I came from, how I think about AI, and why routine is underrated.</p>
+
+      <h2>My Views on AI</h2>
+      <p>I’ll start with AI because, well, that’s the topic everyone throws around right now. 
+      My perspective lines up a lot with <a href="https://en.wikipedia.org/wiki/Andrew_Ng" target="_blank">Andrew Ng’s take</a>. 
+      He frames AI as a productivity booster, a creative tool, and something that (when used well) can save people time instead of just replacing them. 
+      He’s talked about how AI isn’t just generative art or chatbots; it includes simpler machine learning systems like fraud detection or recognition that have been around for years. 
+      He acknowledges the ethical issues (i.e. art scraping, job loss, and misuse) but doesn’t get stuck in doom. Instead, the question becomes: 
+      how do we use this stuff responsibly, and how do we make sure it helps more than it hurts?</p>
+
+      <p>One case that really highlights the mess we’re in is the 
+      <a href="https://www.copyright.gov/docs/zarya-of-the-dawn.pdf" target="_blank">Zarya of the Dawn copyright decision</a>. 
+      The U.S. Copyright Office ruled that while the human-written text of the comic could be protected, the AI-generated images could not. 
+      To me, that signals both the potential and the limitation: AI can clearly contribute to creative works, but our legal and ethical frameworks are still catching up. 
+      My stance is that AI-generated pieces should be viewed as collaborative tools, extensions of human creativity, rather than replacements for it.</p>
+
+      <p>I don’t buy into the extreme hype or the extreme fear. AI is a tool. 
+      The political and ethical questions are real, but that’s exactly why I want to work on it: to push it in the direction that keeps humans at the center. 
+      To me, privacy is a feature, not a nice-to-have.</p>
+
+      <h2>From Pre-Med to CS</h2>
+      <p>I actually came into college as a bio major on the pre-med track. 
+      Surprise: that didn’t last. No matter how hard I studied, it always felt like I was working two or three times harder than everyone else just to keep up. 
+      On the other hand, with quantitative stuff I had no trouble. It clicked naturally. 
+      And I believe most people would agree: when you’re good at something—even moderately—you start to like it. 
+      Pride kicks in, comfort kicks in, and suddenly you’ve found your lane. For me, that lane was CS.</p>
+
+      <p>I didn’t dream of being in computer science at the start, but after my second year it became obvious. 
+      And yes, I knew all the memes about CS grads struggling to find jobs. I still do. 
+      But I’d rather chase the field that keeps me engaged than grind away at something that never fit. 
+      That’s how I ended up with a CS degree in 2025.</p>
+
+      <h2>Where I’m At Now</h2>
+      <p>As of writing this, I’m pursuing an AI certificate at NJIT with plans to transition into their M.S. in AI program. 
+      Honestly, part of the reason is the ridiculous job requirements these days. 
+      “Entry-level” postings look like wishlists for unicorns. So, I figure: stall the search, level up my credentials, and buy myself time. 
+      Two birds, one stone. On the side, I’m teaching myself more about networking and Linux because those are gaps I want filled in before they come back to bite me.</p>
+
+      <h2>Outside Academics <span class="kicker">(the “touching grass” aspect)</span></h2>
+      <p>Let’s talk mental health. Ooohh, scary! But, this is something that I should address, not just for myself but also for people who might need this. I’ve wrestled with it for a few years, and the one habit that’s helped me the most is exercise. 
+      Not because I’m trying to be a bodybuilder (trust me, I’m not), but because it forces a routine. 
+      Whether it’s 30 minutes or an hour, the time doesn’t matter. What matters is that it anchors your day.</p>
+
+      <p>Most people float through their weeks without a plan for their downtime. 
+      Work, then “rest” that’s really just doomscrolling or TV. That kind of rest isn’t rest. Let's be honest with ourselves here: it drains mental energy. 
+      Now on the other hand, exercise is paradoxical: it drains physical energy but leaves you feeling more refreshed and sharp. 
+      Over time, it even stacks bonuses—clothes fit better, your mirror feels less harsh, confidence sneaks back in. 
+      And when you look at successful people, you rarely see those who’ve completely abandoned self-care. 
+      Sure, there are exceptions, but they’re one-in-a-million. For the rest of us, it starts with routines that make us harder to break.
+      Make that one small change in your routine, and the bigger shifts tend to follow on their own.</p>
+
+      <h2>Wrapping Up</h2>
+      <p>So I guess that's a wrap: a pre-med dropout turned CS grad, chasing AI not just for the hype but for the responsibility that comes with it, 
+      trying to balance career moves with actual values, and reminding myself daily that routine, not motivation, is what keeps me going.</p>
+      
+      <p>If you took something out of this, that's great! I'm glad that I could help shape and be a part of your values for the future. 
+      If you didn't, that's completely alright. Each person is at their different walks of life and have differing opinions.
+      Regardless, thanks for taking the time to read this. May God bless you, and I'll see you in the next blog post whenever I do plan on writing another one.</p>
+    `
+  }
+]
+
+
+
+
+function BlogPage({ slug }) {
+  // sort newest → oldest by date
+  const posts = useMemo(
+    () => BLOG_POSTS.slice().sort((a, b) => new Date(b.date) - new Date(a.date)),
+    []
+  )
+
+  // smooth-scroll to post if slug is present
+  const location = useLocation()
+  useEffect(() => {
+    if (!slug) return
+    const id = `post-${slug}`
+    // delay until DOM paints
+    requestAnimationFrame(() => {
+      const el = document.getElementById(id)
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  }, [slug, location.key])
+
+  return (
+    <div className="min-h-screen bg-[#15181b] text-zinc-200">
+      <div className="container container-wide py-10 md:py-14">
+        <div className="max-w-[var(--blog-max)] mx-auto mb-3">
+          <a
+            href="#/"
+            className="text-xs text-zinc-400 underline decoration-zinc-600 underline-offset-4 hover:text-zinc-200"
+          >
+            ← Home
+          </a>
+        </div>
+        <header className="article-hero">
+          <h1 className="article-title">Blog Dump</h1>
+          <div className="article-meta-row flex justify-center text-center uppercase tracking-[0.18em] text-[11px] text-zinc-400 mt-2 mb-6">
+            <span>New posts appear at the top</span>
+          </div>
+        </header>
+
+
+        <div className="space-y-14">
+          {posts.map((post) => {
+            const words = post.body.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length
+            const readMins = Math.max(1, Math.round(words / 200))
+            const dt = new Date(post.date).toLocaleDateString()
+            return (
+              <article key={post.slug} id={`post-${post.slug}`} className="blog-article">
+                <header className="mb-2">
+                  <div className="text-xs text-zinc-400">{dt} • {readMins} min read</div>
+                  <h2 className="article-title mt-1">{post.title}</h2>
+                </header>
+
+                <hr className="blog-separator" />
+
+                <div
+                  className="blog-body"
+                  dangerouslySetInnerHTML={{ __html: post.body }}
+                />
+              </article>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+/* helper to read :slug into a component */
+function RouteRenderer({ component }) {
+  const params = useParams()
+  return component(params)
+}
+
+function BlogTeaser() {
+  const posts = BLOG_POSTS.slice().sort((a,b)=> new Date(b.date)-new Date(a.date))
+  const p = posts[0]
+  if (!p) return null
+  const date = new Date(p.date).toLocaleDateString()
+
+  return (
+    <section className="section" id="blog">
+      <div>
+        <div className="flex items-baseline justify-between">
+          <h2 className="h2">Personal Blog</h2>
+          <a
+            href={`#/blog/${p.slug}`}
+            className="text-sm underline decoration-zinc-600 underline-offset-4 hover:opacity-80"
+          >
+            Latest post
+          </a>
+        </div>
+
+        <a href={`#/blog/${p.slug}`} className="block mt-6">
+          <div className="grid grid-cols-[9ch,1fr] gap-5">
+            <time className="text-xs text-zinc-500 pt-1">{date}</time>
+            <div className="border-l border-white/10 pl-4">
+              <div className="text-xl md:text-2xl font-medium text-zinc-100">
+                {p.title}
+              </div>
+              <p className="mt-1 text-[15px] leading-7 text-zinc-400">
+                {p.excerpt}
+              </p>
+              <div className="mt-3 pt-3 border-t border-white/10 text-sm text-zinc-300">
+                Read on blog →
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+  )
+}
+
+
+
+function Home({ data }) {
+  return (
+    <div className="min-h-screen bg-[#15181b] text-zinc-200">
+      <Header data={data} />
+      <main className="container">
+        <Summary data={data} />
+        <Education data={data} />
+        <Coursework data={data} />
+        <BlogTeaser />
+        <Timeline data={data} />
+      </main>
+      <SiteFooter data={data} />
+    </div>
+  )
+}
+
+
   return (
     <HashRouter>
-      <div className="min-h-screen bg-[#15181b] text-zinc-200">
-        <Header data={data} />
-        <main className="container">
-          <Summary data={data} />
-          <Education data={data} />
-          <Coursework data={data} />
-          <Timeline data={data} />
-        </main>
-        <SiteFooter data={data} />
-      </div>
+      <Routes>
+        <Route path="/" element={<Home data={data} />} />
+        {/* One blog page; optional slug scrolls to that post */}
+        <Route
+          path="/blog/:slug?"
+          element={<RouteRenderer component={(p) => <BlogPage slug={p.slug} />} />}
+        />
+        <Route path="*" element={<Home data={data} />} />
+      </Routes>
     </HashRouter>
   )
 }
@@ -136,7 +341,7 @@ function Header({data}){
   return (
     <header className="bg-[#0f1215]/90 border-b border-white/10 sticky top-0 z-30 backdrop-blur">
       <div className="container py-3 flex items-center justify-between">
-        <span className="font-semibold text-white">{data.name}</span>
+        <a href="#/" className="font-semibold text-white hover:opacity-90">{data.name}</a>
         <nav className="flex items-center gap-3">
           <a className="link text-sm" href="#education">Education</a>
           <a className="link text-sm" href="#projects">Projects</a>
