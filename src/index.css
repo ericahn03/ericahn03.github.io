@@ -13,7 +13,7 @@
   --blog-leading: 1.9;
   --blog-gap: 1.2rem;
   --blog-gap-lg: 1.35rem;
-  --blog-max: 120ch;
+  --blog-max: 100ch;
 
   /* Global fonts */
   --font-body: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
@@ -210,16 +210,5 @@ html, body { font-family: var(--font-body); }
   color: rgb(161 161 170); /* zinc-400 */
 }
 
-html, body {
-  font-family: var(--font-body);
-  font-weight: 400;          /* <-- ensures body text isn’t bold */
-}
-
-.blog-body,
-.blog-body p,
-.blog-body li {
-  font-weight: 400;          /* belt & suspenders for article text */
-}
-
-/* Titles stay bold */
-.article-hero .article-title { font-weight: 700; }
+html, body { font-family: var(--font-body); font-weight: 400; }
+.blog-body, .blog-body p, .blog-body li { font-weight: 400; }
