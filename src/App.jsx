@@ -197,7 +197,7 @@ const FAITH_POSTS = [
   {
     slug: "evidence-of-jesus",       // URL part -> #/faith/evidence-of-jesus
     title: "My take on the hardest questions about Christianity",
-    date: "2025-09-20",              // still sort-able; pinned always shows first
+    date: "2025-09-21",              // still sort-able; pinned always shows first
     pinned: true,                    // <— keeps it at the top
     excerpt: "When it comes to Christianity, I’ve learned that the questions never stop. And honestly, they shouldn’t. Faith isn’t...",
     body: `
@@ -339,9 +339,9 @@ const FAITH_POSTS = [
 
   // --- Weekly posts (add 1 per week, newest dates later) ---
   {
-    slug: "2025-09-21-weekly-note",
+    slug: "2025-09-22-weekly-note",
     title: "Weekly Note — How Long, O Lord? (Psalm 79:1–13)",
-    date: "2025-09-21",
+    date: "2025-09-22",
     excerpt: "Suffering is something every one of us will go through. So when we find ourselves asking, “How could God do this...",
     body: `
       <p>Suffering is something every one of us will go through. So when we find ourselves asking, “How could God do this to me?” we should instead pause and reflect. Are we really too good for suffering not to touch us? The truth is no one is exempt. Even if we don’t say it aloud, most of us will quietly admit it.</p>
