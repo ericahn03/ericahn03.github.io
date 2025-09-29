@@ -12,7 +12,7 @@ export default function App(){
       email: 'mailto:ericahn03@gmail.com',
       github: 'https://github.com/ericahn03',
       linkedin: 'https://www.linkedin.com/in/eric-ahn-1b07592b8/',
-      resume: './resume_final_ea.pdf'
+      resume: './ea_resume.pdf'
     },
     photo: './profile.png',
     projects: [
